@@ -1,0 +1,22 @@
+{
+  "name": "lambda-conference",
+  "version": "0.0.1",
+  "description": "Creating conference management software with Angular over REST in AWS Lambda",
+  "dependencies": {
+    "api-gateway-localdev": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greenfishbluefish/lambda-conference.git"
+  },
+  "author": "Rob Kinyon",
+  "license": "None",
+  "bugs": {
+    "url": "https://github.com/greenfishbluefish/lambda-conference/issues"
+  },
+  "homepage": "https://github.com/greenfishbluefish/lambda-conference#readme"
+}
