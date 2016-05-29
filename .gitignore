@@ -31,3 +31,9 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+# The compilation directory for our server
+.tmp
+
+# Editor tmp files
+.*.sw?
