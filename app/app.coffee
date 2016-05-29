@@ -1,15 +1,17 @@
 'use strict'
 
-express = require 'express'
-agl = require 'api-gateway-localdev'
 _ = require 'lodash'
+agl = require 'api-gateway-localdev'
+express = require 'express'
+glob = require 'glob'
+path = require 'path'
 
-app = agl express(), [
-  _.extend require('./routes/lambda.json'),
-    lambda: require('./routes/lambda.coffee').handler
-  _.extend require('./routes/lambda2.json'),
-    lambda: require('./routes/lambda2.coffee').handler
-]
+glob "#{__dirname}/routes/**/*.coffee", (err, files)->
+  routes = []
+  files.forEach (filename)->
+    file = path.parse filename
+    routes.push _.extend require("#{file.dir}/#{file.name}.json"),
+      lambda: require(filename).handler
 
-app.listen process.env.PORT, ()->
-  console.log("listening on #{process.env.PORT}")
+  agl(express(), routes).listen process.env.PORT, ()->
+    console.log("listening on #{process.env.PORT}")
