@@ -2,23 +2,13 @@
 
 express = require 'express'
 agl = require 'api-gateway-localdev'
+_ = require 'lodash'
 
 app = agl express(), [
-  {
-    lambda: require('./lambda').handler,
-    method: 'GET',
-    path: '/users/{username}',
-    responses:
-      "200":
-        "responseTemplates": {},
-        "responseModels": {}
-      "404":
-        "selectionPattern": ".*404.*",
-        "responseTemplates": {},
-        "responseModels": {}
-    requestTemplates:
-      'application/json': '{"username":"$input.params(\'username\')"}',
-  },
+  _.extend require('./routes/lambda.json'),
+    lambda: require('./routes/lambda.coffee').handler
+  _.extend require('./routes/lambda2.json'),
+    lambda: require('./routes/lambda2.coffee').handler
 ]
 
 app.listen process.env.PORT, ()->

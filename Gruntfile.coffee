@@ -9,8 +9,8 @@ module.exports = (grunt)->
     app: 'app'
 
   grunt.initConfig
-    clean:
-      server: '.tmp'
+    #clean:
+    #  server: '.tmp'
 
     coffee:
       compile:
@@ -40,39 +40,38 @@ module.exports = (grunt)->
       #    '!test/coverage/**/*.coffee'
       #  ]
 
-    concurrent:
-      server: [
-        'newer:coffee'
-      ]
-      test: [
-        'coffee'
-      ]
-      dist: [
-        'coffee'
-      ]
+    #concurrent:
+    #  server: [
+    #    'newer:coffee'
+    #  ]
+    #  test: [
+    #    'coffee'
+    #  ]
+    #  dist: [
+    #    'coffee'
+    #  ]
 
     express:
       dev:
         options:
-          script: '.tmp/app.js'
+          opts: ['node_modules/coffee-script/bin/coffee']
+          script: 'app/app.coffee'
 
     watch:
       coffee:
-        files: [ 'app/**/*.coffee' ]
-        tasks: [ 'newer:coffeelint:all', 'newer:coffee' ]
+        files: [ 'Gruntfile.coffee', 'app/**/*.coffee' ]
+        tasks: [ 'newer:coffeelint:all' ]
       express:
-        files: [ '.tmp/**/*.js' ]
+        files: [ 'app/**/*.coffee', 'app/**/*.json' ]
         tasks: 'express:dev'
         options:
           spawn: false
-      gruntfile:
-        files: [ 'Gruntfile.coffee' ]
-        tasks: [ 'newer:coffeelint:all' ]
 
 
   grunt.registerTask 'serve', [
+    #'clean:server'
     'newer:coffeelint'
-    'concurrent:server'
+    #'concurrent:server'
     'express:dev'
     'watch'
   ]

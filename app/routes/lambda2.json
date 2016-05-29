@@ -1,0 +1,13 @@
+{
+  "method": "GET",
+  "path": "/usery/{username}",
+  "requestTemplates": {
+    "application/json": "{\"username\":\"$input.params('username')\"}"
+  },
+  "responses": {
+    "200": {},
+    "404": {
+      "selectionPattern": ".*404.*"
+    }
+  }
+}
