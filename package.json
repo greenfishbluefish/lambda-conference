@@ -5,19 +5,31 @@
   "dependencies": {},
   "devDependencies": {
     "api-gateway-localdev": "^1.1.0",
+    "blanket": "^1.2.3",
     "express": "^4.13.4",
     "glob": "^7.0.3",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-coffeelint": "0.0.15",
-    "grunt-concurrent": "^2.3.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-coffee": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-express-server": "^0.5.3",
+    "grunt-mocha-test": "^0.12.7",
     "grunt-newer": "^1.2.0",
+    "istanbul": "^0.4.3",
     "jit-grunt": "^0.10.0",
-    "lodash": "^4.13.1"
+    "lodash": "^4.13.1",
+    "mocha": "^2.5.3",
+    "mocha-spec-cov-alt": "^1.1.1",
+    "supertest": "^1.2.0"
+  },
+  "config": {
+    "blanket": {
+      "spec-cov": {
+        "threshold": 100
+      }
+    }
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

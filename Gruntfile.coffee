@@ -3,6 +3,7 @@
 module.exports = (grunt)->
   require('jit-grunt')(grunt,
     express: 'grunt-express-server'
+    mochaTest: 'grunt-mocha-test'
   )
 
   appConfig =
@@ -32,30 +33,35 @@ module.exports = (grunt)->
           'Gruntfile.coffee'
           "#{appConfig.app}/**/*.coffee"
         ]
-      #test:
-      #  options:
-      #    jshintrc: 'test/.coffeelintrc'
-      #  src: [
-      #    'test/**/*.coffee'
-      #    '!test/coverage/**/*.coffee'
-      #  ]
-
-    #concurrent:
-    #  server: [
-    #    'newer:coffee'
-    #  ]
-    #  test: [
-    #    'coffee'
-    #  ]
-    #  dist: [
-    #    'coffee'
-    #  ]
+      test:
+        options:
+          jshintrc: 'test/.coffeelintrc'
+        src: [
+          'test/**/*.coffee'
+        ]
 
     express:
       dev:
         options:
           opts: ['node_modules/coffee-script/bin/coffee']
           script: 'app/app.coffee'
+
+    mochaTest:
+      test:
+        options:
+          reporter: 'mocha-spec-cov-alt'
+          require: [
+            'coffee-script/register'
+            'coverage/blanket'
+          ]
+        src: [ 'spec/**/*.coffee' ]
+      coverage:
+        options:
+          reporter: 'html-cov'
+          quiet: true
+          captureFile: 'coverage.html'
+          require: 'coffee-script/register'
+        src: [ 'spec/**/*.coffee' ]
 
     watch:
       coffee:
@@ -71,11 +77,15 @@ module.exports = (grunt)->
   grunt.registerTask 'serve', [
     #'clean:server'
     'newer:coffeelint'
-    #'concurrent:server'
     'express:dev'
     'watch'
   ]
 
-  grunt.registerTask 'default', [
+  grunt.registerTask 'test', [
     'newer:coffeelint'
+    'mochaTest'
+  ]
+
+  grunt.registerTask 'default', [
+    'test'
   ]
