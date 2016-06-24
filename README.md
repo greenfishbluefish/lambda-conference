@@ -147,30 +147,30 @@ exact details.
 
 # TODO
 
-[ ] Deploy to AWS
-    [ ] Initial steps
-        [ ] IAM
-        [ ] VPC (?)
-        [ ] CloudFormation (?)
-        [ ] What does an initial-stepper need from IAM?
-    [ ] New environment / version steps
-        [ ] Route53
-        [ ] KMS
-        [ ] VPC (?)
-        [ ] API Gateway
-        [ ] AWS Lambda
-        [ ] What does an new-version-maker need from IAM?
-    [ ] Modify an environment/version's access controls
-        [ ] What does a access-controller need from IAM?
-    [ ] Deploy new version (updating Lambda and API Gateway)
-        [ ] What does a deployer need from IAM?
-        [ ] Do we want a different IAM for stage vs. prod (edit/delete API-GW)
-    [ ] Extend the development environment to support versions
-[ ] Extend the functions to add counting hits (use DynamoDB / RDS)
-    [ ] Provide a container for datastore in dev
-    [ ] Provide preamble support for DB connections
-    [ ] Provide a NodeJS container to run the ExpressJS application
-[ ] Hoist app/app.coffee out of app/ to save a directory level
-    [ ] Release it to NPM?
-[ ] Sample app needs 2 different versions to show it off.
-[ ] Support cronjobs vs. API calls
+- [ ] Deploy to AWS
+    - [ ] Initial steps
+        - [ ] IAM
+        - [ ] VPC (?)
+        - [ ] CloudFormation (?)
+        - [ ] What does an initial-stepper need from IAM?
+    - [ ] New environment / version steps
+        - [ ] Route53
+        - [ ] KMS
+        - [ ] VPC (?)
+        - [ ] API Gateway
+        - [ ] AWS Lambda
+        - [ ] What does an new-version-maker need from IAM?
+    - [ ] Modify an environment/version's access controls
+        - [ ] What does a access-controller need from IAM?
+    - [ ] Deploy new version (updating Lambda and API Gateway)
+        - [ ] What does a deployer need from IAM?
+        - [ ] Do we want a different IAM for stage vs. prod (edit/delete API-GW)
+    - [ ] Extend the development environment to support versions
+- [ ] Extend the functions to add counting hits (use DynamoDB / RDS)
+    - [ ] Provide a container for datastore in dev
+    - [ ] Provide preamble support for DB connections
+    - [ ] Provide a NodeJS container to run the ExpressJS application
+- [ ] Hoist app/app.coffee out of app/ to save a directory level
+    - [ ] Release it to NPM?
+- [ ] Sample app needs 2 different versions to show it off.
+- [ ] Support cronjobs vs. API calls
